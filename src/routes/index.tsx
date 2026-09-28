@@ -12,7 +12,6 @@ import {
   Sofa,
   Truck,
 } from "lucide-react";
-import heroImage from "@/assets/hero.jpg";
 
 // ── Placeholders ─────────────────────────────────────────────────────────────
 // PHONE: swap for the real business number once available (3 places use it).
@@ -115,16 +114,9 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden">
-      <img
-        src={heroImage}
-        alt="Maui Removal Works truck loaded with junk at a Maui home at dusk"
-        className="absolute inset-0 -z-10 h-full w-full object-cover"
-        width={1920}
-        height={1080}
-      />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-background via-background/80 to-background/30" />
-      <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-background to-transparent" />
+    <section id="top" className="relative isolate overflow-hidden bg-background">
+      <div className="hero-glow absolute inset-0 -z-10" />
+      <div className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-background to-transparent" />
 
       <div className="mx-auto flex max-w-6xl flex-col items-start gap-7 px-4 py-24 sm:px-6 sm:py-32 lg:py-40">
         <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/70 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground backdrop-blur">

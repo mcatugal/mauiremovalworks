@@ -117,3 +117,11 @@
 @utility text-balance-tight {
   text-wrap: balance;
 }
+
+/* Hero backdrop: soft blue glow fields over the dark base — CSS only, no images */
+@utility hero-glow {
+  background:
+    radial-gradient(ellipse 65% 55% at 78% 15%, color-mix(in oklab, var(--primary) 16%, transparent), transparent 70%),
+    radial-gradient(ellipse 55% 45% at 12% 95%, color-mix(in oklab, var(--primary) 9%, transparent), transparent 70%),
+    linear-gradient(to bottom, color-mix(in oklab, var(--card) 60%, var(--background)), var(--background));
+}
