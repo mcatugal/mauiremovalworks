@@ -396,7 +396,7 @@ function StaticMauiMap() {
   const markerList = SERVED_POINTS.map((p) => `${p.lat},${p.lng}`).join("|");
   const src =
     `https://maps.googleapis.com/maps/api/staticmap` +
-    `?center=20.83,-156.42&zoom=9&size=640x320&scale=2&maptype=hybrid` +
+    `?center=20.82,-156.50&zoom=9&size=640x320&scale=2&maptype=hybrid` +
     `&key=${key}&channel=${channel ?? "maui-removal-works"}` +
     `&markers=size:mid|color:0x2e63dc|${markerList}`;
 
