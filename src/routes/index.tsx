@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   BedDouble,
@@ -345,79 +344,6 @@ const SERVICE_AREAS = [
   },
 ];
 
-// Approximate town centers — the only locations highlighted (Hana intentionally excluded)
-const SERVED_POINTS = [
-  { name: "Kahului", lat: 20.8893, lng: -156.4729 },
-  { name: "Wailuku", lat: 20.8859, lng: -156.5036 },
-  { name: "Waikapū", lat: 20.8617, lng: -156.5033 },
-  { name: "Waiheʻe", lat: 20.9325, lng: -156.4903 },
-  { name: "Kīhei", lat: 20.725, lng: -156.4533 },
-  { name: "Wailea", lat: 20.6972, lng: -156.4411 },
-  { name: "Makena", lat: 20.6486, lng: -156.4469 },
-  { name: "Māʻalaea", lat: 20.8106, lng: -156.4881 },
-  { name: "Lahaina", lat: 20.8783, lng: -156.6819 },
-  { name: "Kāʻanapali", lat: 20.9206, lng: -156.6911 },
-  { name: "Kapalua", lat: 20.9986, lng: -156.6639 },
-  { name: "Napili", lat: 20.9769, lng: -156.6794 },
-  { name: "Pukalani", lat: 20.8389, lng: -156.3361 },
-  { name: "Makawao", lat: 20.8542, lng: -156.3131 },
-  { name: "Kula", lat: 20.7983, lng: -156.3267 },
-  { name: "Haliʻimaile", lat: 20.8742, lng: -156.3436 },
-  { name: "Pāʻia", lat: 20.9078, lng: -156.39 },
-  { name: "Spreckelsville", lat: 20.9153, lng: -156.4142 },
-  { name: "Haʻikū", lat: 20.9189, lng: -156.3111 },
-  { name: "Kuʻau", lat: 20.9211, lng: -156.3742 },
-];
-
-
-function MapFallback() {
-  return (
-    <div className="flex h-64 flex-col items-center justify-center gap-3 p-8 text-center">
-      <MapPin className="h-6 w-6 text-primary" aria-hidden />
-      <p className="max-w-sm text-sm text-muted-foreground">
-        We serve all of Maui — text us your location and we'll confirm right
-        away.
-      </p>
-    </div>
-  );
-}
-
-function StaticMauiMap() {
-  const [failed, setFailed] = useState(false);
-  const key = import.meta.env[
-    "VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY"
-  ] as string | undefined;
-  const channel = import.meta.env[
-    "VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID"
-  ] as string | undefined;
-
-  if (!key) return <MapFallback />;
-
-  const markerList = SERVED_POINTS.map((p) => `${p.lat},${p.lng}`).join("|");
-  const src =
-    `https://maps.googleapis.com/maps/api/staticmap` +
-    `?center=20.82,-156.50&zoom=9&size=640x320&scale=2&maptype=hybrid` +
-    `&key=${key}&channel=${channel ?? "maui-removal-works"}` +
-    `&markers=size:mid|color:0x2e63dc|${markerList}`;
-
-
-  return (
-    <div className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card">
-      {failed ? (
-        <MapFallback />
-      ) : (
-        <img
-          src={src}
-          alt="Map of Maui showing the towns Maui Removal Works serves"
-          loading="lazy"
-          onError={() => setFailed(true)}
-          className="h-auto w-full"
-        />
-      )}
-    </div>
-  );
-}
-
 function ServiceArea() {
   return (
     <section id="service-area" className="border-y border-border/60 bg-card/40">
@@ -456,10 +382,6 @@ function ServiceArea() {
               </ul>
             </div>
           ))}
-        </div>
-
-        <div className="mt-4 sm:mt-6">
-          <StaticMauiMap />
         </div>
       </div>
     </section>
