@@ -550,10 +550,6 @@ function ServiceArea() {
           <MauiMap />
         </div>
 
-        <p className="mt-6 text-sm text-muted-foreground">
-          Don't see your town listed? Text us — we cover the whole island and can
-          confirm right away.
-        </p>
       </div>
     </section>
   );
