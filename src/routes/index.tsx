@@ -394,7 +394,9 @@ function MauiMap() {
     // Google's error card can outlive the removed map container; sweep it out.
     const sweep = () => {
       wrapperRef.current
-        ?.querySelectorAll(".gm-err-container, .gm-style")
+        ?.querySelectorAll(
+          '.gm-err-container, .gm-style, div[style*="rgb(229, 227, 223)"]'
+        )
         .forEach((n) => n.remove());
     };
     sweep();
