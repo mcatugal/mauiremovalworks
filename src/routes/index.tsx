@@ -195,7 +195,7 @@ function HowItWorks() {
         </p>
       </div>
 
-      <div className="mt-14 grid gap-5 sm:grid-cols-3">
+      <div className="mt-12 grid gap-5 sm:mt-14 sm:grid-cols-3">
         {STEPS.map((step, i) => (
           <div
             key={step.title}
@@ -230,18 +230,18 @@ const ITEMS = [
 function WhatWeTake() {
   return (
     <section className="border-y border-border/60 bg-card/40">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <div className="max-w-2xl">
           <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             If it's junk, we take it
           </h2>
-          <p className="mt-3 text-muted-foreground">
+          <p className="mt-4 text-muted-foreground">
             From a single old couch to a full property cleanout — load it, lift it,
             and haul it responsibly.
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3">
+        <div className="mt-12 grid grid-cols-2 gap-4 sm:mt-14 sm:grid-cols-3">
           {ITEMS.map((item) => (
             <div
               key={item.label}
@@ -324,7 +324,7 @@ function Pricing() {
 function FinalCta() {
   return (
     <section className="border-t border-border/60 bg-card/40">
-      <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-24">
+      <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-28">
         <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
           Ready to reclaim your space?
         </h2>
