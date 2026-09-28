@@ -116,6 +116,10 @@ function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden bg-background">
       <div className="hero-glow absolute inset-0 -z-10" />
+      <div className="hero-grid absolute inset-0 -z-10" />
+      <div className="absolute inset-x-0 bottom-0 -z-10 h-[45vh] overflow-hidden [perspective:1000px]">
+        <div className="hero-floor absolute inset-x-[-20%] top-[-10%] bottom-0" />
+      </div>
       <div className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-background to-transparent" />
 
       <div className="mx-auto flex max-w-6xl flex-col items-start gap-7 px-4 py-24 sm:px-6 sm:py-32 lg:py-40">
@@ -126,7 +130,9 @@ function Hero() {
 
         <h1 className="max-w-2xl font-display text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
           Junk removal starting as low as{" "}
-          <span className="text-primary-glow">$99</span>
+          <span className="bg-gradient-to-r from-primary-glow to-primary bg-clip-text text-transparent">
+            $99
+          </span>
         </h1>
 
         <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
