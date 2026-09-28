@@ -145,7 +145,7 @@ function Hero() {
         </div>
 
         <ul className="mt-2 flex flex-wrap gap-x-6 gap-y-2">
-          {["Locally owned & operated", "Licensed & insured", "Upfront pricing"].map(
+          {["Locally owned & operated", "Upfront pricing"].map(
             (item) => (
               <li
                 key={item}
