@@ -497,6 +497,7 @@ function Index() {
         <HowItWorks />
         <WhatWeTake />
         <Pricing />
+        <ServiceArea />
         <Faq />
         <FinalCta />
       </main>
