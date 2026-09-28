@@ -11,6 +11,13 @@ export const PHONE_DISPLAY = "(808) 269-8920";
 export const PHONE_E164 = "+18082698920";
 export const TEL_LINK = `tel:${PHONE_E164}`;
 
+// Official profiles — also listed as "sameAs" in the Google business schema,
+// which tells Google these accounts belong to this business.
+export const SOCIAL_LINKS = [
+  { name: "Instagram", url: "https://www.instagram.com/mauiremovalworks" },
+  { name: "Facebook", url: "https://www.facebook.com/mauiremovalworks" },
+] as const;
+
 // "?&body=" is the form that pre-fills the message on both iOS and Android.
 export const SMS_LINK = `sms:${PHONE_E164}?&body=${encodeURIComponent(
   "Hi Maui Removal Works! Here's a photo of the junk I need removed — can I get a quote?",

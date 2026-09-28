@@ -4,7 +4,9 @@ import {
   Boxes,
   Camera,
   Check,
+  Facebook,
   Hammer,
+  Instagram,
   Leaf,
   MapPin,
   MessageSquareText,
@@ -24,6 +26,7 @@ import {
   SERVICE_AREAS,
   SITE_URL,
   SMS_LINK,
+  SOCIAL_LINKS,
   TEL_LINK,
 } from "../lib/site";
 
@@ -88,6 +91,7 @@ function structuredData() {
         image: OG_IMAGE,
         logo: `${SITE_URL}/icon-512.png`,
         priceRange: "$99+",
+        sameAs: SOCIAL_LINKS.map((link) => link.url),
         ...(OWNER_NAME && { founder: { "@type": "Person", name: OWNER_NAME } }),
         address: {
           "@type": "PostalAddress",
@@ -615,9 +619,28 @@ function Footer() {
             Junk removal serving Kīhei, Kahului, Lahaina, Wailuku & all of Maui, HI
           </p>
         </div>
-        <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} {BUSINESS_NAME}
-        </p>
+        <div className="flex flex-col gap-4 md:items-end">
+          <div className="flex gap-3">
+            {SOCIAL_LINKS.map((link) => {
+              const Icon = link.name === "Instagram" ? Instagram : Facebook;
+              return (
+                <a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${BUSINESS_NAME} on ${link.name}`}
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-border/70 bg-card text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary-glow"
+                >
+                  <Icon className="h-4.5 w-4.5" aria-hidden />
+                </a>
+              );
+            })}
+          </div>
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} {BUSINESS_NAME}
+          </p>
+        </div>
       </div>
     </footer>
   );
