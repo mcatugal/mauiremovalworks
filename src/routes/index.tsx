@@ -369,21 +369,6 @@ const SERVED_POINTS = [
   { name: "Kuʻau", lat: 20.9211, lng: -156.3742 },
 ];
 
-// Static map image (Maps Static API) — dark styles expressed in static-map syntax
-const STATIC_MAP_STYLES = [
-  "feature:all|element:geometry|color:0x171a21",
-  "feature:all|element:labels.text.fill|color:0x9aa4b2",
-  "feature:all|element:labels.text.stroke|color:0x0f1116",
-  "feature:poi|element:all|visibility:off",
-  "feature:poi.park|element:geometry|color:0x1b2430",
-  "feature:landscape.natural|element:geometry|color:0x181c24",
-  "feature:road|element:geometry|color:0x272c36",
-  "feature:road|element:geometry.stroke|color:0x20242d",
-  "feature:road|element:labels.text.fill|color:0x7d8796",
-  "feature:transit|element:all|visibility:off",
-  "feature:water|element:geometry|color:0x0c1622",
-  "feature:water|element:labels.text.fill|color:0x5d7186",
-];
 
 function MapFallback() {
   return (
@@ -411,10 +396,10 @@ function StaticMauiMap() {
   const markerList = SERVED_POINTS.map((p) => `${p.lat},${p.lng}`).join("|");
   const src =
     `https://maps.googleapis.com/maps/api/staticmap` +
-    `?center=20.83,-156.42&zoom=9&size=640x320&scale=2&maptype=roadmap` +
+    `?center=20.82,-156.50&zoom=9&size=640x320&scale=2&maptype=hybrid` +
     `&key=${key}&channel=${channel ?? "maui-removal-works"}` +
-    STATIC_MAP_STYLES.map((s) => `&style=${s}`).join("") +
-    `&markers=size:small|color:0x2e63dc|${markerList}`;
+    `&markers=size:mid|color:0x2e63dc|${markerList}`;
+
 
   return (
     <div className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card">
