@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   BedDouble,
@@ -344,6 +345,122 @@ const SERVICE_AREAS = [
   },
 ];
 
+// Approximate town centers — the only locations highlighted (Hana intentionally excluded)
+const SERVED_POINTS = [
+  { name: "Kahului", lat: 20.8893, lng: -156.4729 },
+  { name: "Wailuku", lat: 20.8859, lng: -156.5036 },
+  { name: "Waikapū", lat: 20.8617, lng: -156.5033 },
+  { name: "Waiheʻe", lat: 20.9325, lng: -156.4903 },
+  { name: "Kīhei", lat: 20.725, lng: -156.4533 },
+  { name: "Wailea", lat: 20.6972, lng: -156.4411 },
+  { name: "Makena", lat: 20.6486, lng: -156.4469 },
+  { name: "Māʻalaea", lat: 20.8106, lng: -156.4881 },
+  { name: "Lahaina", lat: 20.8783, lng: -156.6819 },
+  { name: "Kāʻanapali", lat: 20.9206, lng: -156.6911 },
+  { name: "Kapalua", lat: 20.9986, lng: -156.6639 },
+  { name: "Napili", lat: 20.9769, lng: -156.6794 },
+  { name: "Pukalani", lat: 20.8389, lng: -156.3361 },
+  { name: "Makawao", lat: 20.8542, lng: -156.3131 },
+  { name: "Kula", lat: 20.7983, lng: -156.3267 },
+  { name: "Haliʻimaile", lat: 20.8742, lng: -156.3436 },
+  { name: "Pāʻia", lat: 20.9078, lng: -156.39 },
+  { name: "Spreckelsville", lat: 20.9153, lng: -156.4142 },
+  { name: "Haʻikū", lat: 20.9189, lng: -156.3111 },
+  { name: "Kuʻau", lat: 20.9211, lng: -156.3742 },
+];
+
+const DARK_MAP_STYLES = [
+  { elementType: "geometry", stylers: [{ color: "#171a21" }] },
+  { elementType: "labels.text.fill", stylers: [{ color: "#9aa4b2" }] },
+  { elementType: "labels.text.stroke", stylers: [{ color: "#0f1116" }] },
+  { featureType: "poi", stylers: [{ visibility: "off" }] },
+  { featureType: "poi.park", elementType: "geometry", stylers: [{ color: "#1b2430" }] },
+  { featureType: "landscape.natural", elementType: "geometry", stylers: [{ color: "#181c24" }] },
+  { featureType: "road", elementType: "geometry", stylers: [{ color: "#272c36" }] },
+  { featureType: "road", elementType: "geometry.stroke", stylers: [{ color: "#20242d" }] },
+  { featureType: "road", elementType: "labels.text.fill", stylers: [{ color: "#7d8796" }] },
+  { featureType: "transit", stylers: [{ visibility: "off" }] },
+  { featureType: "water", elementType: "geometry", stylers: [{ color: "#0c1622" }] },
+  { featureType: "water", elementType: "labels.text.fill", stylers: [{ color: "#5d7186" }] },
+];
+
+function MauiMap() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    const key = import.meta.env[
+      "VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY"
+    ] as string | undefined;
+    const channel = import.meta.env[
+      "VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID"
+    ] as string | undefined;
+    if (!key) {
+      setFailed(true);
+      return;
+    }
+
+    const render = () => {
+      const maps = (window as any).google?.maps;
+      if (!containerRef.current || !maps) return;
+      const map = new maps.Map(containerRef.current, {
+        center: { lat: 20.83, lng: -156.42 },
+        zoom: 9,
+        clickableIcons: false,
+        styles: DARK_MAP_STYLES,
+      });
+      SERVED_POINTS.forEach((point) => {
+        new maps.Marker({
+          position: { lat: point.lat, lng: point.lng },
+          map,
+          title: point.name,
+          icon: {
+            path: maps.SymbolPath.CIRCLE,
+            scale: 8,
+            fillColor: "#2e63dc",
+            fillOpacity: 1,
+            strokeColor: "#0d0f14",
+            strokeWeight: 2,
+          },
+        });
+      });
+    };
+
+    (window as any).initMauiMap = render;
+    if ((window as any).google?.maps) {
+      render();
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&loading=async&callback=initMauiMap&channel=${channel ?? "maui-removal-works"}`;
+    script.async = true;
+    script.onerror = () => setFailed(true);
+    document.head.appendChild(script);
+  }, []);
+
+  return (
+    <div className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card">
+      {failed ? (
+        <div className="flex h-64 flex-col items-center justify-center gap-3 p-8 text-center">
+          <MapPin className="h-6 w-6 text-primary" aria-hidden />
+          <p className="max-w-sm text-sm text-muted-foreground">
+            We serve all of Maui — text us your location and we'll confirm
+            right away.
+          </p>
+        </div>
+      ) : (
+        <div
+          ref={containerRef}
+          role="img"
+          aria-label="Map of Maui showing the towns Maui Removal Works serves"
+          className="h-[380px] w-full sm:h-[480px]"
+        />
+      )}
+    </div>
+  );
+}
+
 function ServiceArea() {
   return (
     <section id="service-area" className="border-y border-border/60 bg-card/40">
@@ -382,6 +499,10 @@ function ServiceArea() {
               </ul>
             </div>
           ))}
+        </div>
+
+        <div className="mt-4 sm:mt-6">
+          <MauiMap />
         </div>
 
         <p className="mt-6 text-sm text-muted-foreground">
