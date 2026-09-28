@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   BedDouble,
@@ -369,137 +369,64 @@ const SERVED_POINTS = [
   { name: "Kuʻau", lat: 20.9211, lng: -156.3742 },
 ];
 
-const DARK_MAP_STYLES = [
-  { elementType: "geometry", stylers: [{ color: "#171a21" }] },
-  { elementType: "labels.text.fill", stylers: [{ color: "#9aa4b2" }] },
-  { elementType: "labels.text.stroke", stylers: [{ color: "#0f1116" }] },
-  { featureType: "poi", stylers: [{ visibility: "off" }] },
-  { featureType: "poi.park", elementType: "geometry", stylers: [{ color: "#1b2430" }] },
-  { featureType: "landscape.natural", elementType: "geometry", stylers: [{ color: "#181c24" }] },
-  { featureType: "road", elementType: "geometry", stylers: [{ color: "#272c36" }] },
-  { featureType: "road", elementType: "geometry.stroke", stylers: [{ color: "#20242d" }] },
-  { featureType: "road", elementType: "labels.text.fill", stylers: [{ color: "#7d8796" }] },
-  { featureType: "transit", stylers: [{ visibility: "off" }] },
-  { featureType: "water", elementType: "geometry", stylers: [{ color: "#0c1622" }] },
-  { featureType: "water", elementType: "labels.text.fill", stylers: [{ color: "#5d7186" }] },
+// Static map image (Maps Static API) — dark styles expressed in static-map syntax
+const STATIC_MAP_STYLES = [
+  "feature:all|element:geometry|color:0x171a21",
+  "feature:all|element:labels.text.fill|color:0x9aa4b2",
+  "feature:all|element:labels.text.stroke|color:0x0f1116",
+  "feature:poi|element:all|visibility:off",
+  "feature:poi.park|element:geometry|color:0x1b2430",
+  "feature:landscape.natural|element:geometry|color:0x181c24",
+  "feature:road|element:geometry|color:0x272c36",
+  "feature:road|element:geometry.stroke|color:0x20242d",
+  "feature:road|element:labels.text.fill|color:0x7d8796",
+  "feature:transit|element:all|visibility:off",
+  "feature:water|element:geometry|color:0x0c1622",
+  "feature:water|element:labels.text.fill|color:0x5d7186",
 ];
 
-function MauiMap() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
+function MapFallback() {
+  return (
+    <div className="flex h-64 flex-col items-center justify-center gap-3 p-8 text-center">
+      <MapPin className="h-6 w-6 text-primary" aria-hidden />
+      <p className="max-w-sm text-sm text-muted-foreground">
+        We serve all of Maui — text us your location and we'll confirm right
+        away.
+      </p>
+    </div>
+  );
+}
+
+function StaticMauiMap() {
   const [failed, setFailed] = useState(false);
+  const key = import.meta.env[
+    "VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY"
+  ] as string | undefined;
+  const channel = import.meta.env[
+    "VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID"
+  ] as string | undefined;
 
-  useEffect(() => {
-    if (!failed) return;
-    // Google's error card can outlive the removed map container; sweep it out.
-    const sweep = () => {
-      wrapperRef.current
-        ?.querySelectorAll(
-          '.gm-err-container, .gm-style, div[style*="rgb(229, 227, 223)"]'
-        )
-        .forEach((n) => n.remove());
-    };
-    sweep();
-    const interval = setInterval(sweep, 300);
-    const stop = setTimeout(() => clearInterval(interval), 6000);
-    return () => {
-      clearInterval(interval);
-      clearTimeout(stop);
-    };
-  }, [failed]);
+  if (!key) return <MapFallback />;
 
-  useEffect(() => {
-    const key = import.meta.env[
-      "VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY"
-    ] as string | undefined;
-    const channel = import.meta.env[
-      "VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID"
-    ] as string | undefined;
-    if (!key) {
-      setFailed(true);
-      return;
-    }
-
-    const render = () => {
-      const maps = (window as any).google?.maps;
-      if (!containerRef.current || !maps) return;
-      const map = new maps.Map(containerRef.current, {
-        center: { lat: 20.83, lng: -156.42 },
-        zoom: 9,
-        clickableIcons: false,
-        styles: DARK_MAP_STYLES,
-      });
-      SERVED_POINTS.forEach((point) => {
-        new maps.Marker({
-          position: { lat: point.lat, lng: point.lng },
-          map,
-          title: point.name,
-          icon: {
-            path: maps.SymbolPath.CIRCLE,
-            scale: 8,
-            fillColor: "#2e63dc",
-            fillOpacity: 1,
-            strokeColor: "#0d0f14",
-            strokeWeight: 2,
-          },
-        });
-      });
-    };
-
-    (window as any).initMauiMap = render;
-    if ((window as any).google?.maps) {
-      render();
-      return;
-    }
-
-    // If the map API can't load or is unauthorized for this domain, fall back
-    // to a plain message instead of an empty box or Google's error card.
-    const timeout = setTimeout(() => {
-      if (!containerRef.current?.querySelector(".gm-style-canvas")) setFailed(true);
-    }, 10000);
-
-    const observer = new MutationObserver(() => {
-      const el = containerRef.current;
-      if (!el) return;
-      if (el.querySelector(".gm-style-canvas")) {
-        clearTimeout(timeout);
-        observer.disconnect();
-      } else if (el.textContent?.includes("Oops")) {
-        clearTimeout(timeout);
-        setFailed(true);
-        observer.disconnect();
-      }
-    });
-    observer.observe(containerRef.current!, { childList: true, subtree: true, characterData: true });
-
-    const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&loading=async&callback=initMauiMap&channel=${channel ?? "maui-removal-works"}`;
-    script.async = true;
-    script.onerror = () => setFailed(true);
-    document.head.appendChild(script);
-
-    return () => clearTimeout(timeout);
-  }, []);
+  const markerList = SERVED_POINTS.map((p) => `${p.lat},${p.lng}`).join("|");
+  const src =
+    `https://maps.googleapis.com/maps/api/staticmap` +
+    `?center=20.83,-156.42&zoom=9&size=640x320&scale=2&maptype=roadmap` +
+    `&key=${key}&channel=${channel ?? "maui-removal-works"}` +
+    STATIC_MAP_STYLES.map((s) => `&style=${s}`).join("") +
+    `&markers=size:small|color:0x2e63dc|${markerList}`;
 
   return (
-    <div
-      ref={wrapperRef}
-      className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card"
-    >
+    <div className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card">
       {failed ? (
-        <div className="flex h-64 flex-col items-center justify-center gap-3 p-8 text-center">
-          <MapPin className="h-6 w-6 text-primary" aria-hidden />
-          <p className="max-w-sm text-sm text-muted-foreground">
-            We serve all of Maui — text us your location and we'll confirm
-            right away.
-          </p>
-        </div>
+        <MapFallback />
       ) : (
-        <div
-          ref={containerRef}
-          role="img"
-          aria-label="Map of Maui showing the towns Maui Removal Works serves"
-          className="h-[380px] w-full sm:h-[480px]"
+        <img
+          src={src}
+          alt="Map of Maui showing the towns Maui Removal Works serves"
+          loading="lazy"
+          onError={() => setFailed(true)}
+          className="h-auto w-full"
         />
       )}
     </div>
