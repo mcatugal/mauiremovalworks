@@ -22,6 +22,7 @@ const SMS_LINK = `sms:+18082698920?&body=${encodeURIComponent(
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Maui Removal Works | Junk Removal in Maui, HI" },
