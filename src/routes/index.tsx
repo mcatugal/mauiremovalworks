@@ -303,7 +303,7 @@ function Pricing() {
             Not sure what your job costs?
           </h3>
           <p className="text-sm leading-relaxed text-primary-foreground/85">
-            Text a photo and get a firm quote back — usually within minutes. If you
+            Text a photo and get a quote back — usually within minutes. If you
             like the price, we schedule the pickup. That's it.
           </p>
           <a
