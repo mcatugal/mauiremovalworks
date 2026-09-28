@@ -11,6 +11,9 @@ export const PHONE_DISPLAY = "(808) 269-8920";
 export const PHONE_E164 = "+18082698920";
 export const TEL_LINK = `tel:${PHONE_E164}`;
 
+// Secondary contact — texting stays the primary call to action.
+export const EMAIL = "keanu@mauiremovalworks.com";
+
 // Official profiles — also listed as "sameAs" in the Google business schema,
 // which tells Google these accounts belong to this business.
 export const SOCIAL_LINKS = [

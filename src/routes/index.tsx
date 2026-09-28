@@ -18,6 +18,7 @@ import {
 
 import {
   BUSINESS_NAME,
+  EMAIL,
   OWNER_BIO,
   OWNER_NAME,
   OWNER_PHOTO,
@@ -88,6 +89,7 @@ function structuredData() {
           "Junk removal serving all of Maui. Text a photo for a quick quote — pickups start at $99.",
         url: `${SITE_URL}/`,
         telephone: PHONE_E164,
+        email: EMAIL,
         image: OG_IMAGE,
         logo: `${SITE_URL}/icon-512.png`,
         priceRange: "$99+",
@@ -613,6 +615,15 @@ function Footer() {
               className="font-medium text-foreground transition-colors hover:text-primary-glow"
             >
               {PHONE_DISPLAY}
+            </a>
+          </p>
+          <p className="mt-1">
+            Email{" "}
+            <a
+              href={`mailto:${EMAIL}`}
+              className="font-medium text-foreground transition-colors hover:text-primary-glow"
+            >
+              {EMAIL}
             </a>
           </p>
           <p className="mt-1">
