@@ -27,7 +27,7 @@ export const SMS_LINK = `sms:${PHONE_E164}?&body=${encodeURIComponent(
 // Drop a square photo at public/owner.jpg and set OWNER_PHOTO to "/owner.jpg".
 export const OWNER_NAME: string = "Keanu Catugal";
 export const OWNER_BIO: string =
-  "Born and raised on Maui, I'm a husband and a proud father of three. Outside of junk removal, I serve our community as a firefighter with the County of Maui. Off the clock, you'll find me in the gym or at the beach with my family. I look forward to working with you and taking care of your junk removal needs.";
+  "Born and raised on Maui, I'm a husband and a proud father of three. When I'm not on the job, you'll find me in the gym or at the beach with my family. I look forward to working with you and taking care of your junk removal needs.";
 export const OWNER_PHOTO: string = "/owner.jpg";
 
 export const SERVICE_AREAS = [
