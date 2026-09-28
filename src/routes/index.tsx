@@ -120,13 +120,13 @@ function Hero() {
 
       <div className="mx-auto flex max-w-6xl flex-col items-start gap-7 px-4 py-24 sm:px-6 sm:py-32 lg:py-40">
         <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/70 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground backdrop-blur">
-          <MapPin className="h-3.5 w-3.5 text-primary" aria-hidden />
+          <MapPin className="h-3.5 w-3.5 text-primary-glow" aria-hidden />
           Serving all of Maui
         </div>
 
         <h1 className="max-w-2xl font-display text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
           Junk removal starting as low as{" "}
-          <span className="text-primary">$99</span>
+          <span className="text-primary-glow">$99</span>
         </h1>
 
         <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
@@ -151,7 +151,7 @@ function Hero() {
                 key={item}
                 className="flex items-center gap-2 text-sm font-medium text-foreground/90"
               >
-                <Check className="h-4 w-4 text-primary" aria-hidden />
+                <Check className="h-4 w-4 text-primary-glow" aria-hidden />
                 {item}
               </li>
             )
@@ -184,7 +184,7 @@ function HowItWorks() {
   return (
     <section id="how-it-works" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
       <div className="mx-auto max-w-2xl text-center">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary-glow">
           How it works
         </p>
         <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -205,7 +205,7 @@ function HowItWorks() {
               {i + 1}
             </span>
             <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/15">
-              <step.icon className="h-5.5 w-5.5 text-primary" aria-hidden />
+              <step.icon className="h-5.5 w-5.5 text-primary-glow" aria-hidden />
             </div>
             <h3 className="mt-5 font-display text-lg font-bold tracking-tight text-foreground">
               {step.title}
@@ -248,7 +248,7 @@ function WhatWeTake() {
               className="flex items-center gap-4 rounded-xl border border-border/70 bg-card p-5 transition-colors hover:border-primary/40"
             >
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/15">
-                <item.icon className="h-5 w-5 text-primary" aria-hidden />
+                <item.icon className="h-5 w-5 text-primary-glow" aria-hidden />
               </div>
               <span className="text-sm font-semibold leading-snug text-foreground">
                 {item.label}
@@ -270,7 +270,7 @@ function Pricing() {
     <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
       <div className="grid overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card lg:grid-cols-2">
         <div className="p-8 sm:p-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary-glow">
             Straightforward pricing
           </p>
           <div className="mt-6 flex items-end gap-3">
@@ -290,7 +290,7 @@ function Pricing() {
               "No hidden fees and no surprise dump charges",
             ].map((point) => (
               <li key={point} className="flex items-start gap-3 text-sm text-muted-foreground">
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary-glow" aria-hidden />
                 {point}
               </li>
             ))}
@@ -349,7 +349,7 @@ function ServiceArea() {
     <section id="service-area" className="border-y border-border/60 bg-card/40">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary-glow">
             Service area
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -368,7 +368,7 @@ function ServiceArea() {
               className="rounded-xl border border-border/70 bg-card p-5"
             >
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 shrink-0 text-primary" aria-hidden />
+                <MapPin className="h-4 w-4 shrink-0 text-primary-glow" aria-hidden />
                 <h3 className="font-display text-sm font-bold uppercase tracking-widest text-foreground">
                   {area.region}
                 </h3>
@@ -411,7 +411,7 @@ function Faq() {
   return (
     <section id="faq" className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-28">
       <div className="text-center">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary-glow">
           FAQ
         </p>
         <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -424,7 +424,7 @@ function Faq() {
           <details key={faq.q} className="group px-6 py-5 sm:px-7">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-display text-base font-bold tracking-tight text-foreground [&::-webkit-details-marker]:hidden">
               {faq.q}
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/15 text-primary transition-transform duration-200 group-open:rotate-45">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/15 text-primary-glow transition-transform duration-200 group-open:rotate-45">
                 +
               </span>
             </summary>
@@ -466,7 +466,7 @@ function Footer() {
             Text or call{" "}
             <a
               href="tel:+18082698920"
-              className="font-medium text-foreground transition-colors hover:text-primary"
+              className="font-medium text-foreground transition-colors hover:text-primary-glow"
             >
               {PHONE_DISPLAY}
             </a>
