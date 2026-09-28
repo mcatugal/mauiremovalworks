@@ -356,8 +356,8 @@ function ServiceArea() {
             We serve all of Maui
           </h2>
           <p className="mt-4 text-muted-foreground">
-            From Lahaina to Hana and everywhere in between. If you're on the
-            island, we'll come to you.
+            From Lahaina to Upcountry and everywhere in between. If you're on
+            the island, we'll come to you.
           </p>
         </div>
 
