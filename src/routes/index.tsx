@@ -324,15 +324,15 @@ function Pricing() {
 const SERVICE_AREAS = [
   {
     region: "Central Maui",
-    towns: ["Kahului", "Wailuku", "Waikapu", "Waihee"],
+    towns: ["Kahului", "Wailuku", "Waikapū", "Waiheʻe"],
   },
   {
     region: "South Maui",
-    towns: ["Kihei", "Wailea", "Makena", "Maalaea"],
+    towns: ["Kīhei", "Wailea", "Makena", "Māʻalaea"],
   },
   {
     region: "West Maui",
-    towns: ["Lahaina", "Kaanapali", "Kapalua", "Napili"],
+    towns: ["Lahaina", "Kāʻanapali", "Kapalua", "Napili"],
   },
   {
     region: "Upcountry",
@@ -340,7 +340,7 @@ const SERVICE_AREAS = [
   },
   {
     region: "North Shore",
-    towns: ["Paia", "Spreckelsville", "Haiku", "Kuau"],
+    towns: ["Pāʻia", "Spreckelsville", "Haʻikū", "Kuʻau"],
   },
 ];
 
@@ -477,7 +477,7 @@ function Footer() {
             </a>
           </p>
           <p className="mt-1">
-            Serving Kihei, Kahului, Lahaina, Wailuku & all of Maui
+            Serving Kīhei, Kahului, Lahaina, Wailuku & all of Maui
           </p>
         </div>
         <p className="text-xs text-muted-foreground">
