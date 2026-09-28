@@ -344,6 +344,49 @@ const SERVICE_AREAS = [
   },
 ];
 
+function ServiceArea() {
+  return (
+    <section id="service-area" className="border-y border-border/60 bg-card/40">
+      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+        <div className="max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+            Service area
+          </p>
+          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            We serve all of Maui
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            From Lahaina to Upcountry and everywhere in between. If you're on
+            the island, we'll come to you.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-4 sm:mt-14 sm:grid-cols-2 lg:grid-cols-5">
+          {SERVICE_AREAS.map((area) => (
+            <div
+              key={area.region}
+              className="rounded-xl border border-border/70 bg-card p-5"
+            >
+              <div className="flex items-center gap-2">
+                <MapPin className="h-4 w-4 shrink-0 text-primary" aria-hidden />
+                <h3 className="font-display text-sm font-bold uppercase tracking-widest text-foreground">
+                  {area.region}
+                </h3>
+              </div>
+              <ul className="mt-4 space-y-2">
+                {area.towns.map((town) => (
+                  <li key={town} className="text-sm text-muted-foreground">
+                    {town}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 const FAQS = [
   {
