@@ -425,6 +425,7 @@ function Index() {
         <HowItWorks />
         <WhatWeTake />
         <Pricing />
+        <Faq />
         <FinalCta />
       </main>
       <Footer />
