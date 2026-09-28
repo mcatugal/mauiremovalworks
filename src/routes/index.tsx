@@ -311,7 +311,7 @@ function Pricing() {
             className="inline-flex items-center justify-center gap-2.5 rounded-lg bg-background px-6 py-3.5 text-sm font-semibold tracking-wide text-foreground transition-colors hover:bg-accent"
           >
             <MessageSquareText className="h-4.5 w-4.5" aria-hidden />
-            Get My Quote by Text
+            Get A Quote via Text
           </a>
           <p className="text-xs text-primary-foreground/70">
             Quote by text at {PHONE_DISPLAY}
@@ -521,7 +521,7 @@ const FAQS = [
   },
   {
     q: "How does the photo quote work?",
-    a: `Snap a photo of what needs to go and text it to ${PHONE_DISPLAY}. We reply with a firm quote — usually within minutes — and if you like the price, we lock in a pickup time. No site visit and no forms.`,
+    a: `Snap a photo of what needs to go and text it to ${PHONE_DISPLAY}. We reply with a quote — usually within minutes — and if you like the price, we lock in a pickup time. No site visit and no forms.`,
   },
   {
     q: "How does the $99 minimum work?",
