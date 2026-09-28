@@ -2,6 +2,5 @@
 
 - [x] Build landing page (dark gray/black + blue, photo-to-text quote flow, $99 hook)
 - [x] Remove AI-generated hero image — use CSS-only visuals (user constraint)
-- [ ] Swap placeholder phone number (808) 555-0123 for the real number — blocked on user
+- [x] Swap placeholder phone number for the real number (808) 269-8920
 - [ ] Replace logo placeholder once the designed logo is ready — blocked on user
-- [ ] Confirm "Licensed & insured" claim is accurate before publishing — blocked on user
