@@ -321,6 +321,56 @@ function Pricing() {
   );
 }
 
+const FAQS = [
+  {
+    q: "What items do you remove?",
+    a: "Almost anything: appliances, furniture, mattresses, yard and green waste, construction debris, plus garage, estate, and property cleanouts. If you're unsure, text us a photo — chances are we'll take it.",
+  },
+  {
+    q: "How does the photo quote work?",
+    a: `Snap a photo of what needs to go and text it to ${PHONE_DISPLAY}. We reply with a firm quote — usually within minutes — and if you like the price, we lock in a pickup time. No site visit and no forms.`,
+  },
+  {
+    q: "How does the $99 minimum work?",
+    a: "$99 is our starting price and covers a single-item pickup, even if it's just one thing. Bigger loads cost more, and we price them from your photo before we lift anything — so you'll never get a surprise on pickup day.",
+  },
+  {
+    q: "Do I need to be home for the pickup?",
+    a: "Not necessarily. As long as we can safely access the items, we can haul them while you're away — just let us know the details when we schedule.",
+  },
+];
+
+function Faq() {
+  return (
+    <section id="faq" className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-28">
+      <div className="text-center">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+          FAQ
+        </p>
+        <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          Common questions
+        </h2>
+      </div>
+
+      <div className="mt-10 divide-y divide-border/70 rounded-2xl border border-border/70 bg-card shadow-card">
+        {FAQS.map((faq) => (
+          <details key={faq.q} className="group px-6 py-5 sm:px-7">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-display text-base font-bold tracking-tight text-foreground [&::-webkit-details-marker]:hidden">
+              {faq.q}
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/15 text-primary transition-transform duration-200 group-open:rotate-45">
+                +
+              </span>
+            </summary>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {faq.a}
+            </p>
+          </details>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function FinalCta() {
   return (
     <section className="border-t border-border/60 bg-card/40">
@@ -375,6 +425,7 @@ function Index() {
         <HowItWorks />
         <WhatWeTake />
         <Pricing />
+        <Faq />
         <FinalCta />
       </main>
       <Footer />
