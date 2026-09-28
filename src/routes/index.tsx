@@ -475,7 +475,7 @@ function ServiceArea() {
 
         <div className="mt-4 sm:mt-6">
           <StaticMauiMap />
-
+        </div>
       </div>
     </section>
   );
