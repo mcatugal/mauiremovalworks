@@ -386,7 +386,25 @@ const DARK_MAP_STYLES = [
 
 function MauiMap() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    if (!failed) return;
+    // Google's error card can outlive the removed map container; sweep it out.
+    const sweep = () => {
+      wrapperRef.current
+        ?.querySelectorAll(".gm-err-container, .gm-style")
+        .forEach((n) => n.remove());
+    };
+    sweep();
+    const interval = setInterval(sweep, 300);
+    const stop = setTimeout(() => clearInterval(interval), 6000);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(stop);
+    };
+  }, [failed]);
 
   useEffect(() => {
     const key = import.meta.env[
@@ -462,7 +480,10 @@ function MauiMap() {
   }, []);
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card">
+    <div
+      ref={wrapperRef}
+      className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card"
+    >
       {failed ? (
         <div className="flex h-64 flex-col items-center justify-center gap-3 p-8 text-center">
           <MapPin className="h-6 w-6 text-primary" aria-hidden />
