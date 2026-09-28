@@ -433,10 +433,24 @@ function MauiMap() {
     }
 
     // If the map API can't load or is unauthorized for this domain, fall back
-    // to a plain message instead of an empty box.
+    // to a plain message instead of an empty box or Google's error card.
     const timeout = setTimeout(() => {
-      if (!containerRef.current?.querySelector(".gm-style")) setFailed(true);
-    }, 8000);
+      if (!containerRef.current?.querySelector(".gm-style-canvas")) setFailed(true);
+    }, 10000);
+
+    const observer = new MutationObserver(() => {
+      const el = containerRef.current;
+      if (!el) return;
+      if (el.querySelector(".gm-style-canvas")) {
+        clearTimeout(timeout);
+        observer.disconnect();
+      } else if (el.textContent?.includes("Oops")) {
+        clearTimeout(timeout);
+        setFailed(true);
+        observer.disconnect();
+      }
+    });
+    observer.observe(containerRef.current!, { childList: true, subtree: true, characterData: true });
 
     const script = document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&loading=async&callback=initMauiMap&channel=${channel ?? "maui-removal-works"}`;
