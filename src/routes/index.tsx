@@ -233,7 +233,7 @@ function WhatWeTake() {
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <div className="max-w-2xl">
           <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            If it's junk, we take it
+            Leave the heavy lifting to us
           </h2>
           <p className="mt-4 text-muted-foreground">
             From a single old couch to a full property cleanout — load it, lift it,
