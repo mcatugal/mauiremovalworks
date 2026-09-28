@@ -122,25 +122,25 @@ function Hero() {
       </div>
       <div className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-background to-transparent" />
 
-      <div className="mx-auto flex max-w-6xl flex-col items-start gap-7 px-4 py-24 sm:px-6 sm:py-32 lg:py-40">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-7 px-4 py-24 text-center sm:px-6 sm:py-32 lg:py-40">
         <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/70 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground backdrop-blur">
           <MapPin className="h-3.5 w-3.5 text-primary-glow" aria-hidden />
           Serving all of Maui
         </div>
 
-        <h1 className="max-w-2xl font-display text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+        <h1 className="mx-auto max-w-3xl font-display text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
           Junk removal starting as low as{" "}
           <span className="bg-gradient-to-r from-primary-glow to-primary bg-clip-text text-transparent">
             $99
           </span>
         </h1>
 
-        <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
+        <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground">
           Text us a photo of what you need gone. We'll send back a quick quote —
           no site visit, no waiting around. Then we haul it away.
         </p>
 
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div className="flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-center">
           <TextCtaButton>Text a Photo for a Quick Quote</TextCtaButton>
           <a
             href="#how-it-works"
@@ -150,7 +150,7 @@ function Hero() {
           </a>
         </div>
 
-        <ul className="mt-2 flex flex-wrap gap-x-6 gap-y-2">
+        <ul className="mt-2 flex flex-wrap justify-center gap-x-6 gap-y-2">
           {["Locally owned & operated", "Upfront pricing"].map(
             (item) => (
               <li
