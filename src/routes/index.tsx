@@ -15,8 +15,8 @@ import {
 
 // ── Placeholders ─────────────────────────────────────────────────────────────
 // PHONE: swap for the real business number once available (3 places use it).
-const PHONE_DISPLAY = "(808) 555-0123";
-const SMS_LINK = `sms:+18085550123?&body=${encodeURIComponent(
+const PHONE_DISPLAY = "(808) 269-8920";
+const SMS_LINK = `sms:+18082698920?&body=${encodeURIComponent(
   "Hi Maui Removal Works! Here's a photo of the junk I need removed — can I get a quote?"
 )}`;
 // ─────────────────────────────────────────────────────────────────────────────
@@ -97,7 +97,7 @@ function Header() {
         </a>
         <div className="flex items-center gap-3">
           <a
-            href="tel:+18085550123"
+            href="tel:+18082698920"
             className="hidden items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground md:flex"
           >
             <Truck className="h-4 w-4" aria-hidden />
@@ -348,7 +348,7 @@ function Footer() {
           <p>
             Text or call{" "}
             <a
-              href="tel:+18085550123"
+              href="tel:+18082698920"
               className="font-medium text-foreground transition-colors hover:text-primary"
             >
               {PHONE_DISPLAY}
