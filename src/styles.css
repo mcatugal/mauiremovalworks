@@ -7,7 +7,8 @@
 /*
  * Design system — Maui Removal Works
  * Dark, contractor-sleek: near-black slate surfaces with a professional
- * steel-blue accent. Site is dark-only by design.
+ * steel-blue accent. Brand blue is #3E74A0 (--primary); every other blue and
+ * the slate tint of the grays are derived from its hue (245). Site is dark-only by design.
  */
 
 @theme inline {
@@ -46,48 +47,48 @@
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.135 0.012 255);
+  --background: oklch(0.135 0.012 245);
   --foreground: oklch(0.965 0.005 250);
-  --card: oklch(0.205 0.014 255);
+  --card: oklch(0.205 0.014 245);
   --card-foreground: oklch(0.965 0.005 250);
-  --popover: oklch(0.205 0.014 255);
+  --popover: oklch(0.205 0.014 245);
   --popover-foreground: oklch(0.965 0.005 250);
-  --primary: oklch(0.52 0.17 252);
+  --primary: oklch(0.541 0.09 245); /* #3E74A0 */
   --primary-foreground: oklch(0.985 0.005 250);
-  --primary-glow: oklch(0.64 0.15 240);
-  --secondary: oklch(0.235 0.016 255);
+  --primary-glow: oklch(0.661 0.09 245); /* #6298C6 — lighter brand blue for text/icons */
+  --secondary: oklch(0.235 0.016 245);
   --secondary-foreground: oklch(0.965 0.005 250);
-  --muted: oklch(0.215 0.014 255);
-  --muted-foreground: oklch(0.71 0.018 255);
-  --accent: oklch(0.255 0.022 255);
+  --muted: oklch(0.215 0.014 245);
+  --muted-foreground: oklch(0.71 0.018 245);
+  --accent: oklch(0.255 0.022 245);
   --accent-foreground: oklch(0.965 0.005 250);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0.005 250);
-  --border: oklch(0.335 0.016 255);
-  --input: oklch(0.27 0.016 255);
+  --border: oklch(0.335 0.016 245);
+  --input: oklch(0.27 0.016 245);
   --ring: var(--primary);
 }
 
 .dark {
-  --background: oklch(0.135 0.012 255);
+  --background: oklch(0.135 0.012 245);
   --foreground: oklch(0.965 0.005 250);
-  --card: oklch(0.205 0.014 255);
+  --card: oklch(0.205 0.014 245);
   --card-foreground: oklch(0.965 0.005 250);
-  --popover: oklch(0.205 0.014 255);
+  --popover: oklch(0.205 0.014 245);
   --popover-foreground: oklch(0.965 0.005 250);
-  --primary: oklch(0.52 0.17 252);
+  --primary: oklch(0.541 0.09 245); /* #3E74A0 */
   --primary-foreground: oklch(0.985 0.005 250);
-  --primary-glow: oklch(0.64 0.15 240);
-  --secondary: oklch(0.235 0.016 255);
+  --primary-glow: oklch(0.661 0.09 245); /* #6298C6 — lighter brand blue for text/icons */
+  --secondary: oklch(0.235 0.016 245);
   --secondary-foreground: oklch(0.965 0.005 250);
-  --muted: oklch(0.215 0.014 255);
-  --muted-foreground: oklch(0.71 0.018 255);
-  --accent: oklch(0.255 0.022 255);
+  --muted: oklch(0.215 0.014 245);
+  --muted-foreground: oklch(0.71 0.018 245);
+  --accent: oklch(0.255 0.022 245);
   --accent-foreground: oklch(0.965 0.005 250);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0.005 250);
-  --border: oklch(0.335 0.016 255);
-  --input: oklch(0.27 0.016 255);
+  --border: oklch(0.335 0.016 245);
+  --input: oklch(0.27 0.016 245);
   --ring: var(--primary);
 }
 
