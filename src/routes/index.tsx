@@ -235,7 +235,7 @@ function Hero() {
         </div>
 
         <h1 className="mx-auto max-w-3xl font-display text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-          Maui junk removal starting at{" "}
+          Maui Junk Removal Starting at{" "}
           <span className="bg-gradient-to-r from-primary-glow to-primary bg-clip-text text-transparent">
             $99
           </span>
