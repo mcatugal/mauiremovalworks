@@ -91,7 +91,7 @@ function structuredData() {
         telephone: PHONE_E164,
         email: EMAIL,
         image: OG_IMAGE,
-        logo: `${SITE_URL}/icon-512.png`,
+        logo: `${SITE_URL}/logo-512.png`,
         priceRange: "$99+",
         sameAs: SOCIAL_LINKS.map((link) => link.url),
         ...(OWNER_NAME && { founder: { "@type": "Person", name: OWNER_NAME } }),
@@ -133,24 +133,16 @@ function structuredData() {
   };
 }
 
-function LogoPlaceholder({ compact = false }: { compact?: boolean }) {
+// Official logo, white-lettering version for the dark background (540×216).
+function Logo({ className = "" }: { className?: string }) {
   return (
-    <div className="flex items-center gap-3">
-      {/* Logo placeholder — replace with the finished brand mark when ready */}
-      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary shadow-glow">
-        <Truck className="h-5 w-5 text-primary-foreground" aria-hidden />
-      </div>
-      <div className="leading-tight">
-        <div className="font-display text-base font-bold uppercase tracking-widest text-foreground">
-          Maui Removal Works
-        </div>
-        {!compact && (
-          <div className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Junk Removal · Maui, HI
-          </div>
-        )}
-      </div>
-    </div>
+    <img
+      src="/logo-light.png"
+      alt={BUSINESS_NAME}
+      width={540}
+      height={216}
+      className={`w-auto ${className}`}
+    />
   );
 }
 
@@ -183,7 +175,7 @@ function Header() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-18 max-w-6xl items-center justify-between px-4 sm:px-6">
         <a href="#top" aria-label="Maui Removal Works — home">
-          <LogoPlaceholder compact />
+          <Logo className="h-12 md:h-14" />
         </a>
         {/* On phones the sticky bottom bar carries the CTA, so the logo gets the full row */}
         <div className="hidden items-center gap-5 md:flex">
@@ -609,7 +601,7 @@ function Footer() {
   return (
     <footer className="border-t border-border/60">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 md:flex-row md:items-center md:justify-between">
-        <LogoPlaceholder />
+        <Logo className="h-16 md:h-20" />
         <div className="text-sm text-muted-foreground">
           <p>
             Text or call{" "}
