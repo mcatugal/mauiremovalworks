@@ -203,7 +203,10 @@ function Header() {
 
 function MobileCtaBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border/60 bg-background/90 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md md:hidden">
+    <div
+      data-cta-location="mobile_bar"
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-border/60 bg-background/90 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md md:hidden"
+    >
       <div className="flex gap-3">
         <TextCtaButton className="flex-1 py-3">Text a Photo for a Quote</TextCtaButton>
         <a
@@ -346,7 +349,7 @@ const ITEMS = [
 
 function WhatWeTake() {
   return (
-    <section className="border-y border-border/60 bg-card/40">
+    <section id="what-we-take" className="border-y border-border/60 bg-card/40">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <div className="max-w-2xl">
           <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -384,7 +387,7 @@ function WhatWeTake() {
 
 function Pricing() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+    <section id="pricing" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
       <div className="grid overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card lg:grid-cols-2">
         <div className="p-8 sm:p-12">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary-glow">
@@ -578,7 +581,7 @@ function MeetTheOwner() {
 
 function FinalCta() {
   return (
-    <section className="border-t border-border/60 bg-card/40">
+    <section id="get-a-quote" className="border-t border-border/60 bg-card/40">
       <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-28">
         <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
           Ready to reclaim your space?
