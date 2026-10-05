@@ -8,3 +8,4 @@
 - [x] Conversion pass: sticky mobile text/call bar, number shown for desktop visitors, single hero CTA
 - [x] Local SEO: Maui keyword in H1/title, canonical, Open Graph image, LocalBusiness + FAQ schema, brand favicons
 - [x] "Meet the owner" section with Keanu's bio and headshot
+- [x] Raise starting price from $99 to $125 across the site, schema and link preview

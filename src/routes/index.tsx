@@ -31,8 +31,8 @@ import {
   TEL_LINK,
 } from "../lib/site";
 
-const PAGE_TITLE = "Junk Removal in Maui from $99 | Maui Removal Works";
-const PAGE_DESCRIPTION = `Maui junk removal from $99. Text a photo to ${PHONE_DISPLAY} for a free quote. Furniture, appliances, yard waste & cleanouts across Kīhei, Kahului, Lahaina & more.`;
+const PAGE_TITLE = "Junk Removal in Maui from $125 | Maui Removal Works";
+const PAGE_DESCRIPTION = `Maui junk removal from $125. Text a photo to ${PHONE_DISPLAY} for a free quote. Furniture, appliances, yard waste & cleanouts across Kīhei, Kahului, Lahaina & more.`;
 const OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 export const Route = createFileRoute("/")({
@@ -52,7 +52,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:image:alt",
         content:
-          "Maui Removal Works — Maui junk removal starting at $99. Text a photo for a quote.",
+          "Maui Removal Works — Maui junk removal starting at $125. Text a photo for a quote.",
       },
       { name: "twitter:title", content: PAGE_TITLE },
       { name: "twitter:description", content: PAGE_DESCRIPTION },
@@ -86,13 +86,13 @@ function structuredData() {
         "@id": `${SITE_URL}/#business`,
         name: BUSINESS_NAME,
         description:
-          "Junk removal serving all of Maui. Text a photo for a quick quote — pickups start at $99.",
+          "Junk removal serving all of Maui. Text a photo for a quick quote — pickups start at $125.",
         url: `${SITE_URL}/`,
         telephone: PHONE_E164,
         email: EMAIL,
         image: OG_IMAGE,
         logo: `${SITE_URL}/logo-512.png`,
-        priceRange: "$99+",
+        priceRange: "$125+",
         sameAs: SOCIAL_LINKS.map((link) => link.url),
         ...(OWNER_NAME && { founder: { "@type": "Person", name: OWNER_NAME } }),
         address: {
@@ -115,7 +115,7 @@ function structuredData() {
           },
           priceSpecification: {
             "@type": "PriceSpecification",
-            minPrice: 99,
+            minPrice: 125,
             priceCurrency: "USD",
           },
         },
@@ -232,7 +232,7 @@ function Hero() {
         <h1 className="mx-auto max-w-3xl font-display text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
           Maui Junk Removal Starting at{" "}
           <span className="bg-gradient-to-r from-primary-glow to-primary bg-clip-text text-transparent">
-            $99
+            $125
           </span>
         </h1>
 
@@ -387,7 +387,7 @@ function Pricing() {
           </p>
           <div className="mt-6 flex items-end gap-3">
             <span className="font-display text-7xl font-extrabold tracking-tight text-foreground sm:text-8xl">
-              $99
+              $125
             </span>
             <span className="pb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">
               starting
@@ -397,7 +397,7 @@ function Pricing() {
           </div>
           <ul className="mt-8 space-y-4">
             {[
-              "$99 covers a single-item pickup — even if it's just one thing",
+              "$125 covers a single-item pickup — even if it's just one thing",
               "Larger loads are priced from your photo before we lift anything",
               "No hidden fees and no surprise dump charges",
             ].map((point) => (
@@ -475,7 +475,7 @@ function ServiceArea() {
 const FAQS = [
   {
     q: "How much does junk removal cost on Maui?",
-    a: "Every job starts at $99, which covers a single-item pickup. For anything bigger, text us a photo and we'll send you a quote before we lift anything — no hidden fees and no surprise dump charges.",
+    a: "Every job starts at $125, which covers a single-item pickup. For anything bigger, text us a photo and we'll send you a quote before we lift anything — no hidden fees and no surprise dump charges.",
   },
   {
     q: "How does the photo quote work?",
@@ -494,8 +494,8 @@ const FAQS = [
     a: "All of Maui, including Kahului, Wailuku, Kīhei, Wailea, Lahaina, Kāʻanapali, Kapalua, Pukalani, Makawao, Kula, Pāʻia, and Haʻikū.",
   },
   {
-    q: "How does the $99 minimum work?",
-    a: "$99 is our starting price and covers a single-item pickup, even if it's just one thing. Bigger loads cost more, and we price them from your photo before we lift anything — so you'll never get a surprise on pickup day.",
+    q: "How does the $125 minimum work?",
+    a: "$125 is our starting price and covers a single-item pickup, even if it's just one thing. Bigger loads cost more, and we price them from your photo before we lift anything — so you'll never get a surprise on pickup day.",
   },
   {
     q: "Do I need to be home for the pickup?",
